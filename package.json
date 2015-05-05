@@ -1,0 +1,18 @@
+{
+  "name": "explosive",
+  "version": "0.0.5",
+  "licence": "MIT",
+  "repository": "evoL/explosive",
+  "main": "explosive.js",
+  "scripts": {
+    "build": "babel src --out-dir ."
+  },
+  "dependencies": {
+    "eventemitter3": "^1.0.1",
+    "jsdom": "^5.3.0",
+    "object-assign": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel": "^5.2.15"
+  }
+}
