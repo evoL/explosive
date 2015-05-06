@@ -1,7 +1,7 @@
 # Explosive
 
 A flexible library for stateful server-side rendering.
-Everything here is experimental, unstable, buggy and full of dragons. Please do **not* use in production.
+Everything here is experimental, unstable, buggy and full of dragons. Please do **not** use in production.
 
 Due to the use of [jsdom](https://github.com/tmpvar/jsdom), io.js is required.
 
