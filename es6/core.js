@@ -1,10 +1,10 @@
 import EventEmitter from "eventemitter3";
 import assign from "object-assign";
 
-class State extends EventEmitter {
-  constructor(attributes={}) {
-    super();
-    this.initialize(attributes);
+class State {
+  constructor(parent) {
+    this.parent = parent;
+    this.attributes = {};
   }
 
   initialize(attributes) {
@@ -13,7 +13,7 @@ class State extends EventEmitter {
 
   set(object) {
     assign(this.attributes, object);
-    this.emit('change', this.attributes);
+    this.parent.emit('state:change', this.attributes);
   }
 
   get(key) {
@@ -25,14 +25,10 @@ class Explosive extends EventEmitter {
   constructor() {
     super();
 
-    this._state = new State();
+    this._state = new State(this);
     if (typeof window !== 'undefined') {
       this._state.initialize(window._explosiveState || {});
     }
-
-    ['change'].forEach((event) => {
-      this._state.on(event, (state) => this.emit('state:' + event, state));
-    });
   }
 
   initializeState(attributes) {
@@ -44,13 +40,22 @@ class Explosive extends EventEmitter {
     return this._state.attributes;
   }
 
-  setState(object) {
+  set(object) {
     this._state.set(object);
     return this;
   }
 
+  get(key) {
+    return this._state.get(key);
+  }
+
   loadFinished() {
     this.emit('load:finish');
+    return this;
+  }
+
+  notFound() {
+    this.emit('page:not_found');
     return this;
   }
 }

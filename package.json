@@ -1,11 +1,12 @@
 {
   "name": "explosive",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "licence": "MIT",
   "repository": "evoL/explosive",
   "main": "explosive.js",
   "scripts": {
-    "build": "babel src --out-dir ."
+    "build": "babel es6 --out-dir .",
+    "watch": "babel es6 --watch --out-dir ."
   },
   "dependencies": {
     "eventemitter3": "^1.0.1",

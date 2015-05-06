@@ -52,6 +52,9 @@ exports["default"] = function (passedOptions) {
 
       response.send(r);
       responseSent = true;
+      requestFinished();
+    };
+    var requestFinished = function requestFinished() {
       clearTimeout(responseTimeout);
     };
 
@@ -122,6 +125,12 @@ exports["default"] = function (passedOptions) {
 
     // Send the document once the frontend tells us to.
     explosiveInstance.once("load:finish", sendDocument);
+
+    // Handle the Page Not Found situation
+    explosiveInstance.once("page:not_found", function () {
+      requestFinished();
+      next();
+    });
   };
 };
 
