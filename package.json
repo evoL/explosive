@@ -1,8 +1,15 @@
 {
   "name": "explosive",
   "version": "0.1.0",
+  "description": "Flexible library for stateful server-side rendering.",
   "licence": "MIT",
   "repository": "evoL/explosive",
+  "files": [
+    "core.js",
+    "explosive.js",
+    "global.js",
+    "server.js"
+  ],
   "main": "explosive.js",
   "scripts": {
     "build": "babel es6 --out-dir .",
